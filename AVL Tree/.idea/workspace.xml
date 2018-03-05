@@ -22,12 +22,12 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="main.c" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+            <state relative-caret-position="289">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -38,8 +38,8 @@
       <file leaf-file-name="Tree.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Tree.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="132">
+              <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
               <folding>
                 <element signature="e#90#108#0" expanded="true" />
               </folding>
@@ -50,8 +50,8 @@
       <file leaf-file-name="Tree.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Tree.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,13 +62,14 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>nodeHeight</find>
+      <find>\/\/\n\/\/ Created by Renan on 05\/03\/2018\.\n\/\/\n\#include \&quot;Tree\.h\&quot;\nstruct Data \{\n    int id\;\n    char \*name\;\n\}\;\n\nstruct Node \{\n    int height\;\n    struct Data \*information\;\n    struct Node \*left\;\n    struct Node \*right\;\n\}\;\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nNode\* createTree\(\)\{\n    Node \* root \= \( Node\*\) malloc\(sizeof\(Node\)\)\;\n    if\(root \!\= NULL\)\{\n        \*root \= NULL\; \/\/ There is not any Node allocated after this\.\n    \}else\{\n        return root\;\n    \}\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint insertNode\(Node\* root\,Person \*person\)\{\n    if\(isEmpty\(root\)\)\{\n        Node \*new\;\n        new \= \(Node\*\) malloc\(sizeof\(Node\)\)\;\n        if\(new \=\= NULL\)\{\n            return 0\;\n        \}else\{\n            \(\*new\)\-\&gt;information \= person\;\n            \(\*new\)\-\&gt;right \= NULL\;\n            \(\*new\)\-\&gt;left \= NULL\;\n            root \= new\;\n            return 1\;\n        \}\n    \} else\{\n        Node \*current \= root\;\n        if\(\(\*person\)\-\&gt;id \&lt; \(\*current\)\-\&gt;information\-\&gt;id\)\{\n            if\(insertNode\(\&amp;\(\*current\)\-\&gt;left\,person\) \=\= 1 \)\{\n                if\(balaceFactor\(current\)\&gt;\= 2\)\{\n                    if\(\(\*person\)\-\&gt;id \&lt; \(\*root\)\-\&gt;information\-\&gt;id\)\{\n                        simpleLeftRotation\(root\)\;\n                    \}else\{\n                        simpleRightRotation\(root\)\;\n                    \}\n                \}\n            \}\n        \} else\{\n            if\(\(\*person\)\-\&gt;id\&gt; \(\*current\)\-\&gt;information\-\&gt;id\)\{\n                if\(insertNode\(\&amp;\(\*current\)\-\&gt;right\,person\)\=\=1\)\{\n                    if\(balaceFactor\(current\)\&gt;\=2\)\{\n                        if\(\(\*root\)\-\&gt;right\-\&gt;information\-\&gt;id \&lt; \(\*person\)\-\&gt;id\)\{\n                            simpleRightRotation\(root\)\;\n                        \}else\{\n                            simpleLeftRotation\(root\)\;\n                        \}\n                    \}\n                \}\n            \}\n        \}\n\n    \}\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint removeNode\(Node\* root\,Person \*person\)\{\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid freeTree\(Node\* root\) \{\n    if\(root \=\= NULL\)\{\n        return\;\n    \} else\{\n        freeNode\(root\)\;\n        free\(root\)\;\n    \}\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid freeNode\(Node\* root\)\{\n    if \(root \=\= NULL\) \{\n        return\;\n    \}else\{\n        freeNode\(\&amp;\(\*root\)\-\&gt;left\)\;\n        freeNode\(\&amp;\(\*root\)\-\&gt;right\)\;\n        free\(root\)\;\n        root\= NULL\;\n    \}\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\n\nint treeHeight\(Node\* root\) \{\n    if \(isEmpty\(root\)\) \{\n        printf\(\&quot;Node currently empty\&quot;\)\;\n        return 0\;\n    \}\n    int leftHeight \= treeHeight\(\&amp;\(\*root\)\-\&gt;left\)\;\n    int rightHeight \= treeHeight\(\&amp;\(\*root\)\-\&gt;right\)\;\n\n    if \(leftHeight \&gt; rightHeight\) \{\n        return leftHeight \+ 1\;\n    \} else \{\n        return rightHeight \+ 1\;\n    \}\n\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint nodeHeight\(Node\* node\)\{\n    if\(node \=\= NULL\)\{\n        return \-1\;\n    \} else\{\n        return \(\*node\)\-\&gt;height\;\n    \}\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint isBigger\(int x\, int y\) \{\n    if \(x \&gt; y\) \{\n        return x\;\n    \} else \{\n        return y\;\n    \}\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint balaceFactor\(Node\* node\) \{\n    return labs\(nodeHeight\(\&amp;\(\*node\)\-\&gt;left\) \- nodeHeight\(\&amp;\(\*node\)\-\&gt;right\)\)\;\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint isEmpty\(Node\* root\) \{\n    if \(root \=\= NULL\) \{\n        return 0\;\n    \}\n    if \(\*root \=\= NULL\) \{\n        return 0\;\n    \}\n\n    return 1\;\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint nodesNumber\(Node\* root\) \{\n    if \(isEmpty\(root\)\) \{\n        printf\(\&quot;Node currently empty\&quot;\)\;\n        return 0\;\n    \}\n    int left_total \= nodesNumber\(\&amp;\(\(\*root\)\-\&gt;left\)\)\;\n    int right_total \= nodesNumber\(\&amp;\(\(\*root\)\-\&gt;right\)\)\;\n    return \(left_total \+ right_total \+1\)\;\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid preOrder\(Node\* root\)\{\n    if\(root \=\= NULL\)\{\n        return\;\n    \}\n    if\(\*root \!\=NULL\)\{\n        printf\(\&quot;\%d\\n\&quot;\, \(\*root\)\-\&gt;information\)\; \/\/TODO\n        preOrder\(\&amp;\(\*root\)\-\&gt;left\)\;\n        preOrder\(\&amp;\(\*root\)\-\&gt;right\)\;\n    \}\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid posOrder\(Node\* root\)\{\n    if\(root \=\= NULL\)\{\n        return\;\n    \}\n    if\(\*root \!\=NULL\)\{\n        posOrder\(\&amp;\(\*root\)\-\&gt;left\)\;\n        posOrder\(\&amp;\(\*root\)\-\&gt;right\)\;\n        printf\(\&quot;\%d\\n\&quot;\, \(\*root\)\-\&gt;information\)\; \/\/TODO\n    \}\n\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid inOrder\(Node\* root\)\{\n    if\(root \=\= NULL\)\{\n        return\;\n    \}\n    if\(\*root \!\=NULL\)\{\n        inOrder\(\&amp;\(\*root\)\-\&gt;left\)\;\n        printf\(\&quot;\%d\\n\&quot;\, \(\*root\)\-\&gt;information\)\; \/\/TODO\n        inOrder\(\&amp;\(\*root\)\-\&gt;right\)\;\n    \}\n\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint findNode\(Node\* root\,Person person\)\{\n    if\(isEmpty\(root\)\)\{\n        return \-1\;\n    \} else\{\n        Node \*current \= root\;\n        while \(current\!\=NULL\)\{\n            if\(isEquals\(person\,\&amp;\(\*current\)\-\&gt;information\)\)\{\n                return 1\; \/\/TODO print information\n            \}\n            if\( person\-\&gt;id \&gt; \(\*current\)\-\&gt;information\-\&gt;id\)\{\n                \*current \= \(\*current\)\-\&gt;right\;\n            \}else\{\n                \*current \= \(\*current\)\-\&gt;left\;\n            \}\n        \}\n        return 0\;\n    \}\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nint isEquals\(Person this\, Person other\)\{\n    if\(this\-\&gt;id \=\= other\-\&gt;id \&amp;\&amp; this\-\&gt;name \=\= other\-\&gt;name\)\{\n        return 1\;\n    \}else\{\n        return 0\;\n    \}\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid simpleRightRotation\(Node \* this\)\{\n    Node \* other\;\n    \*other \= \(\*this\)\-\&gt;right\;\n    \(\*this\)\-\&gt;right \= \(\*other\)\-\&gt;left\;\n    \(\*other\)\-\&gt;left \= \*this\;\n    \(\*this\)\-\&gt;height \= isBigger\(nodeHeight\(\&amp;\(\*this\)\-\&gt;left\)\,nodeHeight\(\&amp;\(\*this\)\-\&gt;right\) \+1\)\;\n\n    \(\*other\)\-\&gt;height \= isBigger\(nodeHeight\(\&amp;\(\*other\)\-\&gt;left\)\,\(\*this\)\-\&gt;height \+1\)\;\n\}\n\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid simpleLeftRotation\(Node \* this\)\{\n    Node \* other\;\n    \*other \= \(\*this\)\-\&gt;left\;\n    \(\*this\)\-\&gt;left \= \(\*other\)\-\&gt;right\;\n    \(\*other\)\-\&gt;right \= \*this\;\n    \(\*this\)\-\&gt;height \= isBigger\(nodeHeight\(\&amp;\(\*this\)\-\&gt;left\)\,nodeHeight\(\&amp;\(\*this\)\-\&gt;right\) \+ 1\)\;\n\n    \(\*other\)\-\&gt;height \= isBigger\(nodeHeight\(\&amp;\(\*other\)\-\&gt;left\)\,\(\*this\)\-\&gt;height \+ 1\)\;\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid doubleRightRotation\(Node \* this\)\{\n    simpleRightRotation\(this\)\;\n    simpleLeftRotation\(this\)\;\n\}\n\/\/ \-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\-\nvoid dualRotationLeft\(Node \* this\)\{\n    simpleLeftRotation\(this\)\;\n    simpleRightRotation\(this\)\;\n\}\n\n</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Tree.h" />
         <option value="$PROJECT_DIR$/main.c" />
+        <option value="$PROJECT_DIR$/Tree.h" />
         <option value="$PROJECT_DIR$/Tree.c" />
       </list>
     </option>
@@ -155,32 +156,33 @@
       <option name="presentableId" value="Default" />
       <updated>1520251885134</updated>
       <workItem from="1520251892450" duration="9064000" />
+      <workItem from="1520274149198" duration="12536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9064000" />
+    <option name="totallyTimeSpent" value="21600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -195,32 +197,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/TDM-GCC-64/x86_64-w64-mingw32/include/mmcobj.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="738" column="9" lean-forward="false" selection-start-line="738" selection-start-column="9" selection-end-line="738" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tree.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -233,8 +209,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Tree.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
+        <state relative-caret-position="544">
           <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tree.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#90#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/TDM-GCC-64/x86_64-w64-mingw32/include/mmcobj.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="738" column="9" lean-forward="false" selection-start-line="738" selection-start-column="9" selection-end-line="738" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tree.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding>
+            <element signature="e#90#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tree.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

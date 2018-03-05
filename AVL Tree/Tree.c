@@ -9,19 +9,76 @@ struct Data {
 
 struct Node {
     int height;
-    struct Data information;
+    struct Data *information;
     struct Node *left;
     struct Node *right;
 };
 
 // ----------------------------------------------------------------------
 Node* createTree(){
-    struct Node * root = (struct Node*) malloc(sizeof(Node));
-    if(root !=NULL){
+    Node * root = ( Node*) malloc(sizeof(Node));
+    if(root != NULL){
         *root = NULL; // There is not any Node allocated after this.
+    }else{
+        return root;
     }
-    else{ return root;}
 }
+
+// ----------------------------------------------------------------------
+int insertNode(Node* root,Person *person){
+    int response;
+    if(isEmpty(root)){
+        Node *new;
+        new = (Node*) malloc(sizeof(Node));
+        if(new == NULL){
+            return 0;
+        }else{
+            (*new)->information = *person;
+            (*new)->right = NULL;
+            (*new)->left = NULL;
+            root = new;
+            return 1;
+        }
+    } else{
+        Node *current = root;
+        if((*person)->id < (*current)->information->id){
+            if(response = (insertNode(&(*current)->left,person)) == 1 ){
+                if(balaceFactor(current)>= 2){
+                    if((*person)->id < (*root)->information->id){
+                        simpleLeftRotation(root);
+                    }else{
+                        simpleRightRotation(root);
+                    }
+                }
+            }
+        } else{
+            if((*person)->id> (*current)->information->id){
+                if(( response = insertNode(&(*current)->right,person))==1){
+                    if(balaceFactor(current)>=2){
+                        if((*root)->right->information->id < (*person)->id){
+                            simpleRightRotation(root);
+                        }else{
+                            simpleLeftRotation(root);
+                        }
+                    }
+                }
+            }else{
+                return 0; // Value duplicated.
+            }
+        }
+        (*current)->height = isBigger(nodeHeight(&(*current)->left),nodeHeight(&(*current)->right)) + 1;
+    }
+    return response;
+}
+
+// ----------------------------------------------------------------------
+int removeNode(Node* root,Person *person){
+
+}
+// ----------------------------------------------------------------------
+
+// ----------------------------------------------------------------------
+
 // ----------------------------------------------------------------------
 void freeTree(Node* root) {
     if(root == NULL){
@@ -139,7 +196,7 @@ void inOrder(Node* root){
 
 }
 // ----------------------------------------------------------------------
-int findNode(Node* root,Person person){
+int findNode(Node* root,Person *person){
     if(isEmpty(root)){
         return -1;
     } else{
@@ -148,7 +205,7 @@ int findNode(Node* root,Person person){
             if(isEquals(person,&(*current)->information)){
                 return 1; //TODO print information
             }
-            if( person->id > (*current)->information.id){
+            if( (*person)->id > (*current)->information->id){
                 *current = (*current)->right;
             }else{
                 *current = (*current)->left;
@@ -158,8 +215,8 @@ int findNode(Node* root,Person person){
     }
 }
 // ----------------------------------------------------------------------
-int isEquals(Person this, Person other){
-    if(this->id == other->id && this->name == other->name){
+int isEquals(Person *this, Person *other){
+    if((*this)->id == (*other)->id && (*this)->name == (*other)->name){
         return 1;
     }else{
         return 0;
@@ -167,8 +224,34 @@ int isEquals(Person this, Person other){
 }
 
 // ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
-// ----------------------------------------------------------------------
+void simpleRightRotation(Node * this){
+    Node * other;
+    *other = (*this)->right;
+    (*this)->right = (*other)->left;
+    (*other)->left = *this;
+    (*this)->height = isBigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) +1);
 
+    (*other)->height = isBigger(nodeHeight(&(*other)->left),(*this)->height +1);
+}
 
 // ----------------------------------------------------------------------
+void simpleLeftRotation(Node * this){
+    Node * other;
+    *other = (*this)->left;
+    (*this)->left = (*other)->right;
+    (*other)->right = *this;
+    (*this)->height = isBigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) + 1);
+
+    (*other)->height = isBigger(nodeHeight(&(*other)->left),(*this)->height + 1);
+}
+// ----------------------------------------------------------------------
+void doubleRightRotation(Node * this){
+    simpleRightRotation(this);
+    simpleLeftRotation(this);
+}
+// ----------------------------------------------------------------------
+void dualRotationLeft(Node * this){
+    simpleLeftRotation(this);
+    simpleRightRotation(this);
+}
+

@@ -11,10 +11,10 @@ int main() {
     printf("Tests before the execution");
     printf("\nAddres of count: %p",&count);
     printf("\nContent of p: %p",p);
-    printf("\nAddres of p: %p",&p);
+    printf("\nAddres of &p: %p",&p);
     printf("\nContent of p2: %p",p2);
-
-    printf("\nSize of int: %i", sizeof(int));
+    printf("\nContent of *p2: %p",*p2);
+    printf("\nContent of **p2: %d",**p2);
     return EXIT_SUCCESS;
 
 }
