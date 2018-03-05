@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Dell/CLionProjects/AVL Tree/Tree.c
+Tree.h
+C:/Users/Dell/CLionProjects/AVL Tree/Tree.h
+
+C:/Users/Dell/CLionProjects/AVL Tree/Tree.h
+stdio.h
+-
+stdlib.h
+-
+stdbool.h
+-
+
+C:/Users/Dell/CLionProjects/AVL Tree/main.c
+stdio.h
+-
+stdlib.h
+-
+
