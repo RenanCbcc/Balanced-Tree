@@ -4,8 +4,10 @@ public class Patient implements Comparable<Patient>, Hospital {
 	private String name;
 	private Severity severity;
 
-	public Patient(String name) {
+	public Patient(String name,Severity severity,int ticket) {
 		this.name = name;
+		this.severity = severity;
+		this.ticket = ticket;
 	}
 
 	public void setTicket(int ticket) {

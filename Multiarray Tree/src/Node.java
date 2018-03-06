@@ -4,7 +4,7 @@ public class Node< Σ extends Hospital > {
 	private int numItems;
 	private Node<Σ> parent;
 	private Node<Σ>[] childArray;
-	private Hospital[] itemArray;
+	private Σ[] itemArray;
 
 	// ----------------------------------------------------------------------
 	public Node() {
@@ -30,8 +30,8 @@ public class Node< Σ extends Hospital > {
 	/**
 	 * Disconnect child from its Nodes and returns it.
 	 */
-	public Node<Hospital> disconnectChild(int index) {
-		Node<Hospital> temp = (Node<Hospital>) childArray[index];
+	public Node<Σ> disconnectChild(int index) {
+		Node<Σ> temp = (Node<Σ>) childArray[index];
 		childArray[index] = null;
 		return temp;
 	}
@@ -57,8 +57,8 @@ public class Node< Σ extends Hospital > {
 	}
 
 	// ----------------------------------------------------------------------
-	public Node<Σ> getItem(int index) {
-		return childArray[index];
+	public Σ getItem(int index) {
+		return itemArray[index];
 	}
 
 	// ----------------------------------------------------------------------
@@ -67,12 +67,12 @@ public class Node< Σ extends Hospital > {
 	}
 
 	// ----------------------------------------------------------------------
-	public int findItem(Hospital object) {
+	public int findItem(Σ object) {
 		for (int i = 0; i <= ORDER; i++) {
 			if (itemArray[i] == null) {
 				break;
 			} else if (itemArray[i] == object) {
-				return i;
+				return i; // Returns the index.
 			}
 
 		}
@@ -110,6 +110,11 @@ public class Node< Σ extends Hospital > {
 	}
 	
 	// ----------------------------------------------------------------------
+
+	/**
+	 * This method works like a stack.
+	 * @return
+	 */
 	public Σ removeItem() {
 		if (isEmpty()) {
 			System.out.println("The node is currently empty.");
