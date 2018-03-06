@@ -110,8 +110,19 @@ public class Tree< Σ extends Hospital > {
     }
 
     // ----------------------------------------------------------------------
-    public void displayTree(){
+    public void displayTree(Node<Σ> current,int level, int index){
+        System.out.println("Level: "+level+"Child number: "+index+ " ");
+        current.displayNode();
+        int numberOfItems = current.getNumberOftems();
+        for(int i = 0; i< numberOfItems; i++){
+            Node<Σ> next = current.getChild(i);
+            if(next != null){
+                displayTree(next,level+1,i);
 
+            }else {
+                return;
+            }
+        }
     }
     // ----------------------------------------------------------------------
 }
