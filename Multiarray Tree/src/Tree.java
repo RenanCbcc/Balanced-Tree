@@ -59,8 +59,15 @@ public class Tree< Σ extends Hospital > {
                 split(current);
                 current = current.getParent(); //Back up
                 current =getNextChild(current,object);
+            } else if(current.isLeaf()){
+              break;
+              //Node is full, not lef, going to a lower level.
+            }else{
+                current = getNextChild(current,object);
             }
         }
+
+        current.insertItem(object);
     }
 
     // ----------------------------------------------------------------------
@@ -70,7 +77,7 @@ public class Tree< Σ extends Hospital > {
 
     private void split(Node<Σ> current) {
         //Assumes Node is full
-        Σ middle,last;
+        Σ middle,last; // The cells of content are arranged like this (First/middle/Last) inside every Node.
         Node<Σ> parent, childTwo, childThree;
         int index;
 
@@ -79,13 +86,32 @@ public class Tree< Σ extends Hospital > {
         childTwo = current.disconnectChild(2);
         childThree = current.disconnectChild(3);
 
+        Node<Σ> newRightNode = new Node<Σ>();
+
+        if(current == root){
+            root = new Node<Σ>();
+            parent = root;
+            root.connectChild(0,current);
+        }else{
+            parent = current.getParent();
+        }
+        index = parent.insertItem(middle);
+        int n = parent.getNumberOftems();
+
+        for(int i = n-1; i>index; i--){ //Start on right.
+            Node<Σ> temp = parent.disconnectChild(i);
+            parent.connectChild(i+1,temp);
+        }
+        parent.connectChild(index+1,newRightNode);
+        newRightNode.insertItem(last);
+        newRightNode.connectChild(0,childTwo);
+        newRightNode.connectChild(0,childThree);
 
     }
 
     // ----------------------------------------------------------------------
-    // ----------------------------------------------------------------------
-    // ----------------------------------------------------------------------
-    // ----------------------------------------------------------------------
+    public void displayTree(){
 
-
+    }
+    // ----------------------------------------------------------------------
 }

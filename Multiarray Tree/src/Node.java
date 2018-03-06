@@ -86,13 +86,13 @@ public class Node< Σ extends Hospital > {
 		numItems++;
 		int newKey = object.getTicket();
 
-		for (int i = ORDER - 2; i >= 0; i--) {
+		for (int i = ORDER - 2; i >= 0; i--) {//Start on right.
 			if (itemArray[i] == null) {
 				continue; // Go left one cell.
 			} else {
-				int itsKey = ((Hospital) itemArray[i]).getTicket();
+				int itsKey = ((Σ) itemArray[i]).getTicket();
 				if (newKey < itsKey) {
-					itemArray[i + 1] = itemArray[i]; // Shift to right.
+					itemArray[i + 1] = itemArray[i]; // Shift it right.
 				} else {
 					itemArray[i + 1] = object;
 					return i + 1;
