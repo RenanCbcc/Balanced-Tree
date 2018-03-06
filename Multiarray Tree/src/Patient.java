@@ -1,6 +1,4 @@
-package data;
-
-public class Patient implements Comparable<Patient> {
+public class Patient implements Comparable<Patient>, Hospital {
 
 	private int ticket;
 	private String name;

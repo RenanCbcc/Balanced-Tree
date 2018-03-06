@@ -1,24 +1,22 @@
-package tow_three_four_tree;
 
-public class Node<Σ> {
+public class Node< Σ extends Hospital > {
 	private static final int ORDER = 4;
 	private int numItems;
 	private Node<Σ> parent;
 	private Node<Σ>[] childArray;
-	private Σ[] itemArray;
+	private Hospital[] itemArray;
 
 	// ----------------------------------------------------------------------
-	@SuppressWarnings("unchecked")
 	public Node() {
 		childArray = (Node<Σ>[]) new Object[ORDER - 1];
 		itemArray = (Σ[]) new Object[ORDER - 1];
 	}
 
 	// ----------------------------------------------------------------------
+
 	/**
 	 * Connects child to this Node.
-	 * 
-	 * @param childNum
+	 * @param index
 	 * @param child
 	 */
 	public void connectChild(int index, Node<Σ> child) {
@@ -32,8 +30,8 @@ public class Node<Σ> {
 	/**
 	 * Disconnect child from its Nodes and returns it.
 	 */
-	public Node<Σ> disconnectChild(int index) {
-		Node<Σ> temp = (Node<Σ>) childArray[index];
+	public Node<Hospital> disconnectChild(int index) {
+		Node<Hospital> temp = (Node<Hospital>) childArray[index];
 		childArray[index] = null;
 		return temp;
 	}
@@ -69,7 +67,7 @@ public class Node<Σ> {
 	}
 
 	// ----------------------------------------------------------------------
-	public int findItem(Σ object) {
+	public int findItem(Hospital object) {
 		for (int i = 0; i <= ORDER; i++) {
 			if (itemArray[i] == null) {
 				break;
@@ -82,17 +80,17 @@ public class Node<Σ> {
 	}
 
 	// ----------------------------------------------------------------------
-	//ERRO HERE
+
 	public int insertItem(Σ object) {
 		// assumes node is not full
 		numItems++;
-		int newKey = ((Object) object).getTicket();
+		int newKey = object.getTicket();
 
 		for (int i = ORDER - 2; i >= 0; i--) {
 			if (itemArray[i] == null) {
 				continue; // Go left one cell.
 			} else {
-				int itsKey = ((Object) itemArray[i]).getTicket();
+				int itsKey = ((Hospital) itemArray[i]).getTicket();
 				if (newKey < itsKey) {
 					itemArray[i + 1] = itemArray[i]; // Shift to right.
 				} else {
@@ -116,8 +114,8 @@ public class Node<Σ> {
 		if (isEmpty()) {
 			System.out.println("The node is currently empty.");
 		}
-		
-		Σ temp = itemArray[numItems-1];
+
+		Σ temp = (Σ) itemArray[numItems-1];
 		itemArray[numItems-1] = null;
 		numItems--;
 		return temp;
