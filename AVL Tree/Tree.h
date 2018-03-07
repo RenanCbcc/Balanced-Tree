@@ -19,7 +19,8 @@ int treeHeight(Node* root);
 int nodeHeight(Node* node);
 int nodesNumber(Node* root);
 int findNode(Node* root,Person *person);
-int isBigger(int x, int y);
+int bigger(int x, int y);
+Node * minimum(Node* node);
 int balaceFactor(Node* node);
 
 // ----------------------------------------------------------------------

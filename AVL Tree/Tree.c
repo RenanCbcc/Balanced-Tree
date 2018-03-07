@@ -42,7 +42,7 @@ int insertNode(Node* root,Person *person){
     } else{
         Node *current = root;
         if((*person)->id < (*current)->information->id){
-            if(response = (insertNode(&(*current)->left,person)) == 1 ){
+            if(( response = (insertNode(&(*current)->left, person)) == 1)){
                 if(balaceFactor(current)>= 2){
                     if((*person)->id < (*root)->information->id){
                         simpleLeftRotation(root);
@@ -66,17 +66,73 @@ int insertNode(Node* root,Person *person){
                 return 0; // Value duplicated.
             }
         }
-        (*current)->height = isBigger(nodeHeight(&(*current)->left),nodeHeight(&(*current)->right)) + 1;
+        (*current)->height = bigger(nodeHeight(&(*current)->left),nodeHeight(&(*current)->right)) + 1;
+
     }
     return response;
 }
 
 // ----------------------------------------------------------------------
 int removeNode(Node* root,Person *person){
+    if(*root == NULL){
+        return 0;
+    }
+    int response;
+    if((*person)->id < (*root)->information->id){
+        if(( response = (removeNode(&(*root)->left, person)) == 1)){
+            if(balaceFactor(root) >=2){
+                if(nodeHeight(&(*root)->left->right) <= nodeHeight(&(*root)->right->right)){
+                    simpleRightRotation(root);
+                }else{
+                    doubleRightRotation(root);
+                }
+            }
+        }
+    }
+    if((*person)->id > (*root)->information->id){
+        if(( response = (removeNode(&(*root)->right, person)) == 1)){
+            if(balaceFactor(root) >=2){
+                if(nodeHeight(&(*root)->left->right) <= nodeHeight(&(*root)->left->left)){
+                    simpleLeftRotation(root);
+                }else{
+                    dualRotationLeft(root);
+                }
+            }
+        }
+    }
 
+    if((*root)->information->id == (*person)->id){
+        if( (*root)->left == NULL || (*root)->right == NULL ){
+            //Node has only one child
+            Node *old = root;
+            if( (*root)->left != NULL){
+                root = &(*root)->left;
+            }else{
+                root = &(*root)->right;
+            }
+           free(old);
+        }else{
+            Node* temporary = minimum(&(*root)->right);
+            (*root)->information->id = (*temporary)->information->id;
+            removeNode(&(*root)->right,&(*root)->information);;
+            if(balaceFactor(root) >=2){
+                if(nodeHeight(&(*root)->left->right) <= nodeHeight(&(*root)->left->left)){
+                    simpleLeftRotation(root);
+                }else{
+                    dualRotationLeft(root);
+                }
+            }
+        }
+        if((*root) != NULL){
+            (*root)->height = bigger(nodeHeight(&(*root)->left),nodeHeight(&(*root)->right)) +1;
+        }
+
+        return 1;
+    }
+
+    (*root)->height = bigger(nodeHeight(&(*root)->left),nodeHeight(&(*root)->right)) +1;
+    return response;
 }
-// ----------------------------------------------------------------------
-
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
@@ -126,14 +182,22 @@ int nodeHeight(Node* node){
     }
 }
 // ----------------------------------------------------------------------
-int isBigger(int x, int y) {
+int bigger(int x, int y) {
     if (x > y) {
         return x;
     } else {
         return y;
     }
 }
-
+// ----------------------------------------------------------------------
+Node* minimum(Node* current){
+    Node *parent = current;
+    while( current != NULL){
+        parent = current;
+        current = &(*current)->left;
+    }
+    return parent;
+}
 // ----------------------------------------------------------------------
 int balaceFactor(Node* node) {
     return labs(nodeHeight(&(*node)->left) - nodeHeight(&(*node)->right));
@@ -229,9 +293,9 @@ void simpleRightRotation(Node * this){
     *other = (*this)->right;
     (*this)->right = (*other)->left;
     (*other)->left = *this;
-    (*this)->height = isBigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) +1);
+    (*this)->height = bigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) +1);
 
-    (*other)->height = isBigger(nodeHeight(&(*other)->left),(*this)->height +1);
+    (*other)->height = bigger(nodeHeight(&(*other)->left),(*this)->height +1);
 }
 
 // ----------------------------------------------------------------------
@@ -240,9 +304,9 @@ void simpleLeftRotation(Node * this){
     *other = (*this)->left;
     (*this)->left = (*other)->right;
     (*other)->right = *this;
-    (*this)->height = isBigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) + 1);
+    (*this)->height = bigger(nodeHeight(&(*this)->left),nodeHeight(&(*this)->right) + 1);
 
-    (*other)->height = isBigger(nodeHeight(&(*other)->left),(*this)->height + 1);
+    (*other)->height = bigger(nodeHeight(&(*other)->left),(*this)->height + 1);
 }
 // ----------------------------------------------------------------------
 void doubleRightRotation(Node * this){
